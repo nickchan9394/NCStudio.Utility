@@ -34,5 +34,12 @@ namespace NCStudio.Utility.Testing
                 DateTimeZoneHandling = DateTimeZoneHandling.Local
             }));
         }
+
+        public static bool EqualsOrThrows<T>(T expected,T actual)
+        {
+            var expectedString = JsonConvert.SerializeObject(expected);
+            var actualString = JsonConvert.SerializeObject(actual);
+            return expectedString == actualString ? true : throw new Exception($"Expected:{expectedString}\nActual:{actualString}");
+        }
     }
 }
