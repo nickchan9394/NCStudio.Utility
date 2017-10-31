@@ -1,6 +1,15 @@
 # NCStudio.Utility
 This project contains common utilities for coding and testing.
 
+****
+# Mvc:
+### Middleware
++ **`ResponseExceptionMiddleware & UseResponseExceptionMiddlewareExtenstions`**:
+
+    Catch exception thrown by internal server and response it to api client.
+    
+    Usage: `app.UseResponseException()`
+****
 # Testing:
 ### Mocking
 + **`DbSet<T> GetMockDbSet<T>(List<T> sourceList)`** :
@@ -40,3 +49,4 @@ This project contains common utilities for coding and testing.
 + **`Task<ResponseResult> DeleteAsync(string uri)`**:
 
     Make a Delete request and return a ResponseResult.
+****
