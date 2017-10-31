@@ -14,7 +14,6 @@ namespace NCStudio.Utility.Testing
             {
                 var response = await httpClient.GetAsync(uri);
 
-                response.EnsureSuccessStatusCode();
                 var result = await response.Content.ReadAsStringAsync();
                 return new ResponseResult
                 {
@@ -31,7 +30,6 @@ namespace NCStudio.Utility.Testing
                 var response = await httpClient
                     .PostAsync(uri,new StringContent(content, encoding??Encoding.UTF8, mediaType));
 
-                response.EnsureSuccessStatusCode();
                 var result = await response.Content.ReadAsStringAsync();
                 return new ResponseResult
                 {
@@ -48,7 +46,6 @@ namespace NCStudio.Utility.Testing
                 var response = await httpClient
                     .PutAsync(uri, new StringContent(content, encoding ?? Encoding.UTF8, mediaType));
 
-                response.EnsureSuccessStatusCode();
                 var result = await response.Content.ReadAsStringAsync();
                 return new ResponseResult
                 {
@@ -64,7 +61,6 @@ namespace NCStudio.Utility.Testing
             {
                 var response = await httpClient.DeleteAsync(uri);
 
-                response.EnsureSuccessStatusCode();
                 var result = await response.Content.ReadAsStringAsync();
                 return new ResponseResult
                 {
