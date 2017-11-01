@@ -37,8 +37,14 @@ namespace NCStudio.Utility.Testing
 
         public static bool EqualsOrThrows<T>(T expected,T actual)
         {
-            var expectedString = JsonConvert.SerializeObject(expected);
-            var actualString = JsonConvert.SerializeObject(actual);
+            var expectedString = JsonConvert.SerializeObject(expected,new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            var actualString = JsonConvert.SerializeObject(actual,new JsonSerializerSettings
+            {
+                ReferenceLoopHandling=ReferenceLoopHandling.Ignore
+            });
             return expectedString == actualString ? true : throw new Exception($"Expected:{expectedString}\nActual:{actualString}");
         }
     }
