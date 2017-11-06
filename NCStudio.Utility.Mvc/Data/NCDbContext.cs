@@ -8,6 +8,9 @@ namespace NCStudio.Utility.Mvc.Data
 {
     public class NCDbContext : DbContext, INCDbContext
     {
+        public NCDbContext() { }
+        public NCDbContext(DbContextOptions options) : base(options) { }
+
         public void LoadNavigationProperty(EntityEntry entry, params string[] props)
         {
             foreach (var prop in props)
