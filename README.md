@@ -9,6 +9,11 @@ This project contains common utilities for coding and testing.
     Catch exception thrown by internal server and response it to api client.
     
     Usage: `app.UseResponseException()`
+
+### Data
++ **`NCDbContext & INCDbContext`**:
+
+    Implement LoadNavigationProperty & MarkAsDeleted\<T\>
 ****
 # Testing:
 ### Mocking
