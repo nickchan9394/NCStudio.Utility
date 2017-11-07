@@ -54,4 +54,35 @@ This project contains common utilities for coding and testing.
 + **`Task<ResponseResult> DeleteAsync(string uri)`**:
 
     Make a Delete request and return a ResponseResult.
+
+### DockerStartupFixture
+
+Base class for xUnit Startup Fixture
+
++ **`string GetApi(string path,string port)`**:
+
+    Construct Api string
+
++ **`void ActOnDb<T>(DbContextOptions dbOptions,Action<T> act)`**:
+
+    Inject data to Database
+
++ **`void runSSHCommand(string commandText)`**:
+
+    Run ssh commands
+
++ **`void runProcess(string fileName, string arguments)`**:
+
+    Run process
+
++ **`async Task<bool> WaitForService(string uri,int timeoutSeconds=60)`**:
+
+    Check service availability
+
++ Usage:
+    + Set Envirionment Parameters:
+        + INTEGRATIONTEST_DOCKERHOST: docker host ip address
+        + INTEGRATIONTEST_DOCKERUSER: docker host ssh login user
+        + INTEGRATIONTEST_DOCKERPASSWORD: docker host ssh login password
+    + Override InitTestEnv() and Dispose()
 ****
