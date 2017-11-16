@@ -20,9 +20,17 @@ This project contains common utilities for coding and testing.
 
     Implement Exception handling in Mediatr pipeline
 
++ **`AddExceptionBehaviorExtension`**:
+
+    Add Exception Behavior to .Net Core service DI, order sensitive
+
 + **`ValidationBehavior`**:
 
     Implement Command Validation in Mediatr pipeline
+
++ **`AddValidationBehaviorExtension`**:
+
+    Add Validation Behavior to .Net Core service DI, order sensitive
 
 ****
 # Testing:
