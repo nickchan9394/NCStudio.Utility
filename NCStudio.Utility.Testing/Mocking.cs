@@ -17,7 +17,7 @@ namespace NCStudio.Utility.Testing
             var queryable = sourceList.AsQueryable();
 
             var dbSet = new Mock<DbSet<T>>();
-            dbSet.As<IQueryable<T>>().Setup(m => m.Provider).Returns(queryable.Provider);
+            dbSet.As<IQueryable<T>>().Setup(m => m.Provider).Returns(new AsyncQueryProvider<T>(queryable.Provider));
             dbSet.As<IQueryable<T>>().Setup(m => m.Expression).Returns(queryable.Expression);
             dbSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
             dbSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(() => queryable.GetEnumerator());
@@ -29,7 +29,7 @@ namespace NCStudio.Utility.Testing
             return dbSet.Object;
         }
 
-        class AsyncQueryProvider<TEntity> : IAsyncQueryProvider
+        internal class AsyncQueryProvider<TEntity> : IAsyncQueryProvider
         {
             private readonly IQueryProvider _inner;
 
@@ -69,7 +69,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        class AsyncEnumerable<T> : EnumerableQuery<T>, IAsyncEnumerable<T>, IQueryable<T>
+        internal class AsyncEnumerable<T> : EnumerableQuery<T>, IAsyncEnumerable<T>, IQueryable<T>
         {
             public AsyncEnumerable(IEnumerable<T> enumerable)
                 : base(enumerable)
@@ -86,7 +86,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        class AsyncEnumerator<T> : IAsyncEnumerator<T>
+        internal class AsyncEnumerator<T> : IAsyncEnumerator<T>
         {
             private readonly IEnumerator<T> enumerator;
 
