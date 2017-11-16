@@ -14,6 +14,16 @@ This project contains common utilities for coding and testing.
 + **`NCDbContext & INCDbContext`**:
 
     Implement LoadNavigationProperty & MarkAsDeleted\<T\>
+
+### Behaviors
++ **`ExceptionBehavior`**:
+
+    Implement Exception handling in Mediatr pipeline
+
++ **`ValidationBehavior`**:
+
+    Implement Command Validation in Mediatr pipeline
+
 ****
 # Testing:
 ### Mocking
