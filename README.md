@@ -13,7 +13,11 @@ This project contains common utilities for coding and testing.
 ### Data
 + **`NCDbContext & INCDbContext`**:
 
-    Implement LoadNavigationProperty & MarkAsDeleted\<T\>
+    + LoadNavigationProperty 
+    + MarkAsDeleted<T>
+    + RunTransactionAsync
+    + T RunTransactionAsync<T>
+    + SaveAsync
 
 ### Behaviors
 + **`ExceptionBehavior`**:
