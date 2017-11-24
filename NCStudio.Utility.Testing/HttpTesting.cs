@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using NCStudio.Utility.Security;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -174,7 +175,7 @@ namespace NCStudio.Utility.Testing
 
         private static void addTokenInCookie(HttpClient httpClient, string username, string[] roles,
                 string cookieDomain,
-                KeyValuePair<string, string>[] clamins,
+                IList<KeyValuePair<string, string>> claims,
                 string secretKey,
                 string audience, string issuer)
         {
@@ -189,13 +190,14 @@ namespace NCStudio.Utility.Testing
             var jwtService = new JwtService();
 
             JsonWebToken token;
-            if (clamins != null)
+            if (claims != null)
             {
-                token = jwtService.GenerateJsonWebToken(username, roles, options, clamins);
+                claims.Add(new KeyValuePair<string, string>("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name", username));
+                token = jwtService.GenerateJsonWebToken(username, roles, options, claims.ToArray());
             }
             else
             {
-                token = jwtService.GenerateJsonWebToken(username, roles, options);
+                token = jwtService.GenerateJsonWebToken(username, roles, options, new KeyValuePair<string, string>("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name", username));
             }
 
 
