@@ -14,9 +14,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.2.0-preview2-41113220915" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\NCStudio.Utility.Extensions\NCStudio.Utility.Extensions.csproj" />
+    <PackageReference Include="NCStudio.Utility.Extensions" Version="1.0.1-CIBuild1926" />
   </ItemGroup>
 </Project>
