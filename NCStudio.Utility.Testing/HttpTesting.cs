@@ -33,7 +33,7 @@ namespace NCStudio.Utility.Testing
             string cookieDomain = "",
             KeyValuePair<string,string>[] clamins=null,
             string secretKey = "1234567890123456",
-            string audience="LegoUser",string issuer="Lego")
+            string audience="NCUser",string issuer="NC")
         {
             using (var httpClient = new HttpClient())
             {
@@ -76,7 +76,7 @@ namespace NCStudio.Utility.Testing
             Encoding encoding = null, 
             string mediaType = "application/json",
             string secretKey = "1234567890123456",
-            string audience = "LegoUser", string issuer = "Lego")
+            string audience = "NCUser", string issuer = "NC")
         {
             using (var httpClient = new HttpClient())
             {
@@ -118,7 +118,7 @@ namespace NCStudio.Utility.Testing
             Encoding encoding = null,
             string mediaType = "application/json",
             string secretKey = "1234567890123456",
-            string audience = "LegoUser", string issuer = "Lego")
+            string audience = "NCUser", string issuer = "NC")
         {
             using (var httpClient = new HttpClient())
             {
@@ -156,7 +156,7 @@ namespace NCStudio.Utility.Testing
             string cookieDomain = "",
             KeyValuePair<string, string>[] clamins = null,
             string secretKey = "1234567890123456",
-            string audience = "LegoUser", string issuer = "Lego")
+            string audience = "NCUser", string issuer = "NC")
         {
             using (var httpClient = new HttpClient())
             {
