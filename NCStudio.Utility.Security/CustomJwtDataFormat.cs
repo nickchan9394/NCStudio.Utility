@@ -47,13 +47,13 @@ namespace NCStudio.Utility.Security
 
                 // Additional custom validation of JWT claims here (if any)
             }
-            catch (SecurityTokenValidationException)
+            catch (SecurityTokenValidationException se)
             {
-                return null;
+                throw se;
             }
-            catch (ArgumentException)
+            catch (ArgumentException ae)
             {
-                return null;
+                throw ae;
             }
 
             // Validation passed. Return a valid AuthenticationTicket:
