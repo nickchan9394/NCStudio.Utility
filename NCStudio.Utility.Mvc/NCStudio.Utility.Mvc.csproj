@@ -16,7 +16,7 @@
     <PackageReference Include="MediatR" Version="3.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="NCStudio.Core" Version="1.0.1-CIBuild1901" />
-    <PackageReference Include="NCStudio.Utility.Security" Version="1.0.1-CIBuild1928" />
+    <PackageReference Include="NCStudio.Utility.Security" Version="1.0.1-CIBuild1940" />
   </ItemGroup>
 
   <ItemGroup>
