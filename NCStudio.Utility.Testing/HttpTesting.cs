@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace NCStudio.Utility.Testing
 {
-    public static class HttpTesting
+    public class HttpTesting
     {
 
-        public async static Task<ResponseResult> GetAsync(string uri)
+        public async Task<ResponseResult> GetAsync(string uri)
         {
             using (var httpClient = new HttpClient())
             {
@@ -28,7 +28,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        public async static Task<ResponseResult> GetAsync(string uri,
+        public async Task<ResponseResult> GetAsync(string uri,
             string username,string[] roles,
             string cookieDomain = "",
             KeyValuePair<string,string>[] clamins=null,
@@ -50,7 +50,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        public async static Task<ResponseResult> PostAsync(string uri,string content,Encoding encoding=null,string mediaType="application/json")
+        public async Task<ResponseResult> PostAsync(string uri,string content,Encoding encoding=null,string mediaType="application/json")
         {
             using (var httpClient = new HttpClient())
             {
@@ -66,7 +66,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        public async static Task<ResponseResult> PostAsync(
+        public async Task<ResponseResult> PostAsync(
             string uri, 
             string content, 
             string username,
@@ -94,7 +94,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        public async static Task<ResponseResult> PutAsync(string uri, string content, Encoding encoding = null, string mediaType = "application/json")
+        public async Task<ResponseResult> PutAsync(string uri, string content, Encoding encoding = null, string mediaType = "application/json")
         {
             using (var httpClient = new HttpClient())
             {
@@ -110,7 +110,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        public async static Task<ResponseResult> PutAsync(string uri, string content,
+        public async Task<ResponseResult> PutAsync(string uri, string content,
             string username,
             string[] roles,
             string cookieDomain = "",
@@ -136,7 +136,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        public async static Task<ResponseResult> DeleteAsync(string uri)
+        public async Task<ResponseResult> DeleteAsync(string uri)
         {
             using (var httpClient = new HttpClient())
             {
@@ -151,7 +151,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        public async static Task<ResponseResult> DeleteAsync(string uri,
+        public async Task<ResponseResult> DeleteAsync(string uri,
             string username, string[] roles,
             string cookieDomain = "",
             KeyValuePair<string, string>[] clamins = null,
@@ -173,7 +173,7 @@ namespace NCStudio.Utility.Testing
             }
         }
 
-        private static void addTokenInCookie(HttpClient httpClient, string username, string[] roles,
+        private void addTokenInCookie(HttpClient httpClient, string username, string[] roles,
                 string cookieDomain,
                 IList<KeyValuePair<string, string>> claims,
                 string secretKey,
