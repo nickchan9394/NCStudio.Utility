@@ -33,7 +33,7 @@ namespace NCStudio.Utility.Security
                 issuer: options.Issuer,
                 audience: options.Audience,
                 claims: claims,
-                notBefore: now,
+                notBefore: now.AddHours(-1),
                 expires: now.Add(TimeSpan.FromDays(1)),
                 signingCredentials: options.SigningCredentials
                 );
