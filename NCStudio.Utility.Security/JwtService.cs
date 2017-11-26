@@ -34,7 +34,7 @@ namespace NCStudio.Utility.Security
                 audience: options.Audience,
                 claims: claims,
                 notBefore: now.AddMinutes(-5),
-                expires: now.AddDays(1),
+                expires: now.AddDays(30),
                 signingCredentials: options.SigningCredentials
                 );
 
