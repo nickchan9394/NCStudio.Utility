@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace NCStudio.Utility.Mvc.Behaviors
 {
@@ -18,7 +19,7 @@ namespace NCStudio.Utility.Mvc.Behaviors
             _validators = validators??throw new ArgumentNullException(nameof(IValidator<TRequest>));
         }
 
-        public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next)
+        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             var failures = _validators
                 .Select(v => v.Validate(request))
@@ -28,11 +29,11 @@ namespace NCStudio.Utility.Mvc.Behaviors
 
             if (failures.Any())
             {
-                throw new ValidationException($"Command Validation Errors for type { typeof(TRequest).Name} : {String.Join("\n",failures.Select(f=>f.ErrorMessage))}"
+                throw new ValidationException($"Command Validation Errors for type { typeof(TRequest).Name} : {String.Join("\n", failures.Select(f => f.ErrorMessage))}"
                     , failures);
             }
 
-            return next();
+            return await next();
         }
     }
 }
