@@ -38,6 +38,11 @@ namespace NCStudio.Utility.Testing
             return $"http://{dockerHost}:{port}/{path}";
         }
 
+        public string GetHost()
+        {
+            return dockerHost;
+        }
+
         public void ActOnDb<T>(DbContextOptions dbOptions,Action<T> act) where T : IDisposable
         {
             using (var context = (T)Activator.CreateInstance(typeof(T),dbOptions))
