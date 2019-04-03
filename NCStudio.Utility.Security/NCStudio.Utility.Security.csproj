@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
+    <VersionPrefix>1.0.1</VersionPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.2.0-preview2-41113220915" />
+    <PackageReference Include="NCStudio.Utility.Extensions" Version="1.0.1-CIBuild1926" />
+  </ItemGroup>
+</Project>

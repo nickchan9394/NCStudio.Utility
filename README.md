@@ -1,20 +1,110 @@
-#Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# NCStudio.Utility
+This project contains common utilities for coding and testing.
 
-#Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+****
+# Mvc:
+### Middleware
++ **`ResponseExceptionMiddleware & UseResponseExceptionMiddlewareExtenstions`**:
 
-#Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+    Catch exception thrown by internal server and response it to api client.
+    
+    Usage: `app.UseResponseException()`
 
-#Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+### Data
++ **`NCDbContext & INCDbContext`**:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+    + LoadNavigationProperty 
+    + MarkAsDeleted<T>
+    + RunTransactionAsync
+    + T RunTransactionAsync<T>
+    + SaveAsync
+
+### Behaviors
++ **`ExceptionBehavior`**:
+
+    Implement Exception handling in Mediatr pipeline
+
++ **`AddExceptionBehaviorExtension`**:
+
+    Add Exception Behavior to .Net Core service DI, order sensitive
+
++ **`ValidationBehavior`**:
+
+    Implement Command Validation in Mediatr pipeline
+
++ **`AddValidationBehaviorExtension`**:
+
+    Add Validation Behavior to .Net Core service DI, order sensitive
+
+****
+# Testing:
+### Mocking
++ **`DbSet<T> GetMockDbSet<T>(List<T> sourceList)`** :
+    
+    Get a DbSet mocking object for testing.
+
+### Jsonning
++ **`string SerializeJsonObjectWithCamelCasePropertyNames(object target)`**:
+    
+    Serial an object to json string with camel case properties.
+
++ **`JObject ConvertToCamelCasePropertyJObject(object target)`**:
+    
+    Convert an object to JObject with camel case properties.
+
++ **`JObject ConvertToJObject(object target)`**:
+    
+    Convert an object to JObject
+
++ **`bool EqualsOrThrows<T>(T expected,T actual)`**:
+    
+    Return true is json strings equal, throws if not.
+
+### HttpTesting
++ **`Task<ResponseResult> GetAsync(string uri)`**:
+
+    Make a Get request and return a ResponseResult.
+
++ **`Task<ResponseResult> PostAsync(string uri,string content,Encoding encoding=null,string mediaType="application/json")`**:
+    
+    Make a Post request and return a ResponseResult.
+
++ **`Task<ResponseResult> PutAsync(string uri, string content, Encoding encoding = null, string mediaType = "application/json")`**:
+
+    Make a Put request and return a ResponseResult.
+
++ **`Task<ResponseResult> DeleteAsync(string uri)`**:
+
+    Make a Delete request and return a ResponseResult.
+
+### DockerStartupFixture
+
+Base class for xUnit Startup Fixture
+
++ **`string GetApi(string path,string port)`**:
+
+    Construct Api string
+
++ **`void ActOnDb<T>(DbContextOptions dbOptions,Action<T> act)`**:
+
+    Inject data to Database
+
++ **`void runSSHCommand(string commandText)`**:
+
+    Run ssh commands
+
++ **`void runProcess(string fileName, string arguments)`**:
+
+    Run process
+
++ **`async Task<bool> WaitForService(string uri,int timeoutSeconds=60)`**:
+
+    Check service availability
+
++ Usage:
+    + Set Envirionment Parameters:
+        + INTEGRATIONTEST_DOCKERHOST: docker host ip address
+        + INTEGRATIONTEST_DOCKERUSER: docker host ssh login user
+        + INTEGRATIONTEST_DOCKERPASSWORD: docker host ssh login password
+    + Override InitTestEnv() and Dispose()
+****
